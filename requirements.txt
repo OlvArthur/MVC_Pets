@@ -7,3 +7,4 @@ pylint==3.3.6
 tomlkit==0.13.2
 pre-commit
 SQLAlchemy==2.0.40
+pytest
