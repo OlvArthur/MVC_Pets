@@ -13,7 +13,3 @@ repos:
             "--rcfile=.pylintrc", # Link to your config file
             "--load-plugins=pylint.extensions.docparams", # Load an extension
           ]
-      - id: requirements_freeze
-        name: requirements_freeze
-        entry: venv/bin/pip3 freeze > requirements.txt
-        language: system
