@@ -1,4 +1,4 @@
-from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import NoResultFound
 from src.models.sqlite.settings.connection import DBConnectionHandler
 from src.models.sqlite.entities.pets import PetsTable
 
