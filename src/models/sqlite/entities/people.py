@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, BIGINT, ForeignKey
-
 from src.models.sqlite.settings.base import Base
+# pylint: disable=unused-import
+from .pets import PetsTable
 
 class PeopleTable(Base):
     __tablename__ = "people"
