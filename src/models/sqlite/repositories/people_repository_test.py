@@ -52,3 +52,9 @@ def test_insert_person(setup):
 def test_insert_person_integration():
     repo = PeopleRepository(db_connection_handler)
     repo.insert_person(first_name='john', last_name='Doe', age=22, pet_id=1)
+
+@pytest.mark.skip(reason='Database interaction')
+def test_get_person_integration():
+    repo = PeopleRepository(db_connection_handler)
+    found_person = repo.get_person(3)
+    print(found_person)
