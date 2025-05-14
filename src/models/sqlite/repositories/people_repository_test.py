@@ -4,6 +4,8 @@ from mock_alchemy.mocking import UnifiedAlchemyMagicMock
 
 from src.models.sqlite.settings.connection import db_connection_handler
 from src.models.sqlite.entities.people import PeopleTable
+from src.models.interfaces.entities.people import PeopleInterface
+
 from .people_repository import PeopleRepository
 
 db_connection_handler.connect_to_db()
@@ -58,3 +60,6 @@ def test_get_person_integration():
     repo = PeopleRepository(db_connection_handler)
     found_person = repo.get_person(3)
     print(found_person)
+
+def test_entity_interface_implementation():
+    assert isinstance(PeopleTable(), PeopleInterface)

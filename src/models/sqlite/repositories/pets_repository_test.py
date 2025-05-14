@@ -1,12 +1,13 @@
 from unittest import mock
 from typing import TypedDict
 import pytest
-
-
-from sqlalchemy.exc import NoResultFound
 from mock_alchemy.mocking import UnifiedAlchemyMagicMock
+from sqlalchemy.exc import NoResultFound
+
 from src.models.sqlite.settings.connection import db_connection_handler
 from src.models.sqlite.entities.pets import PetsTable
+from src.models.interfaces.entities.pets import PetsInterface
+
 from .pets_repository import PetsRepository
 
 # db_connection_handler.connect_to_db()
@@ -124,3 +125,6 @@ def test_delete_pet_error(setup):
         setup['no_data_repo'].delete_pets('zeca')
 
     setup['no_data_connection_handler_mock'].session.rollback.assert_called_once()
+
+def test_entity_interface_implementation():
+    assert isinstance(PetsTable(), PetsInterface)

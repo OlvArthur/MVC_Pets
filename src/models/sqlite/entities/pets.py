@@ -10,4 +10,3 @@ class PetsTable(Base):
 
     def __repr__(self):
         return f"Pets [name={self.name}, type={self.type}]"
-    
