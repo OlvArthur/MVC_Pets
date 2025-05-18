@@ -1,16 +1,10 @@
 import re
-from typing import TypedDict
 
 from src.models.interfaces.repositories.people_repository import PeopleRepositoryInterface
 
-class FormattedResponseData(TypedDict):
-    type: str
-    count: int
-    attributes: dict
+from .interfaces.base_interface import BaseControllerInterface, FormattedResponse
 
-class FormattedResponse(TypedDict):
-    data: FormattedResponseData
-class CreatePersonController:
+class CreatePersonController(BaseControllerInterface):
     def __init__(self, people_repository: PeopleRepositoryInterface):
         self.__people_repository = people_repository
 
