@@ -9,10 +9,17 @@ class DeletePetController(DeletePetControllerInterface):
     def execute(self, pet_name: str) -> None:
         self.__validate_input(pet_name)
 
+        self.__verify_pet_exists(pet_name)
+
         self.__pets_repository.delete_pets(pet_name)
 
 
     def __validate_input(self, pet_name: str) -> None:
         if not isinstance(pet_name, str):
             raise Exception('Invalid Pet name')
-        
+
+    def __verify_pet_exists(self, pet_name: str) -> None:
+        found_pet = self.__pets_repository.find_pet_by_name(pet_name)
+
+        if not found_pet:
+            raise Exception('Invalid pet name')

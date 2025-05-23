@@ -27,3 +27,16 @@ class PetsRepository:
             except Exception as exc:
                 database.session.rollback()
                 raise exc
+
+    def find_pet_by_name(self, pet_name: str) -> None:
+        with self.__db_connection as database:
+            try:
+                found_pet = (
+                    database.session
+                        .query(PetsTable)
+                        .filter(PetsTable.name == pet_name)
+                        .one()
+                )
+                return found_pet
+            except NoResultFound:
+                return None

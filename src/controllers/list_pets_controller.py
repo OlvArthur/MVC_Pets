@@ -22,7 +22,7 @@ class ListPetsController(BaseControllerInterface):
             'data': {
                 'type': 'Pet',
                 'count': len(pets),
-                'attributes': [{'name': pet.name, 'type': pet.type } for pet in pets]
+                'attributes': [{'id':pet.id ,'name': pet.name, 'type': pet.type } for pet in pets]
             }
         }
         
