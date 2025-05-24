@@ -1,6 +1,7 @@
 import re
 
 from src.models.interfaces.repositories.people_repository import PeopleRepositoryInterface
+from src.errors.types.http_bad_request import HttpBadRequestError
 
 from .interfaces.base_interface import BaseControllerInterface, FormattedResponse
 
@@ -27,7 +28,7 @@ class CreatePersonController(BaseControllerInterface):
         non_valid_characters = re.compile(r'[^a-zA-Z]')
 
         if non_valid_characters.search(first_name) or non_valid_characters.search(last_name):
-            raise Exception("Invalid person name")
+            raise HttpBadRequestError("Invalid person name")
 
     def __format_response(self, person_info: dict) -> FormattedResponse:
         return {

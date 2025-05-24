@@ -1,5 +1,6 @@
 from src.models.interfaces.repositories.people_repository import PeopleRepositoryInterface
 from src.models.interfaces.entities.people import PeopleInterface
+from src.errors.types.http_not_found import HttpNotFoundError
 
 from .interfaces.find_person_controller_interface import (
   FindPersonControllerInterface, FormattedResponse
@@ -25,7 +26,7 @@ class FindPersonController(FindPersonControllerInterface):
 
     def __validate_input(self, person_id: int) -> None:
         if not isinstance(person_id, int):
-            raise Exception('Invalid id')
+            raise HttpNotFoundError('Invalid id')
 
     def __format_response(self, person: PeopleInterface) -> dict:
         return {
